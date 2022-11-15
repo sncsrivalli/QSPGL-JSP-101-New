@@ -12,6 +12,7 @@ import genericLibraries.WebDriverUtility;
 public class HomePage {
 	
 	//Declaration
+	@FindBy(xpath = "//a[@class='hdrLink']") private WebElement pageHeader;
 	@FindBy(xpath = "//a[.='Leads']") private WebElement leadsTab;
 	@FindBy(xpath = "//a[.='Contacts']") private WebElement contactsTab;
 	@FindBy(xpath = "//a[.='Organizations']") private WebElement organizationsTab;
@@ -24,6 +25,10 @@ public class HomePage {
 	}
 	
 	//Business Libraries
+	
+	public String getPageHeader() {
+		return pageHeader.getText();
+	}
 	
 	public void clickOrganizationsTab() {
 		organizationsTab.click();

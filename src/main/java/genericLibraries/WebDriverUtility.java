@@ -12,7 +12,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
@@ -28,49 +27,15 @@ public class WebDriverUtility {
 	public WebDriver driver;
 	
 	/**
-	 * This method is used to launch the browser 
-	 * @param browser 
-	 * @return 
-	 */
-	public WebDriver openBrowser(String browser) {
-		
-		switch(browser) {
-		
-		case "chrome": WebDriverManager.chromedriver().setup();
-						driver = new ChromeDriver();
-						break;
-		case "firefox":WebDriverManager.firefoxdriver().setup();
-						driver = new FirefoxDriver();
-						break;
-		default : System.out.println("Invalid browser name");break;
-		}
-		driver.manage().window().maximize();
-		return driver;
-	}
-	
-	/**
-	 * This method is used to Navigate to the application
-	 */
-	public void navigateToApplication(String url) {
-		driver.get(url);
-	}
-	
-	/**
-	 * This method is used to wait until the page is loaded
-	 * @param time 
-	 */
-	public void waitTillPageLoad(long time) {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(time));
-	}
-	
-	/**
 	 * This method Opens the browser and navigates to application
 	 * @return 
 	 */
-	public WebDriver openBrowserAndApplication(String browser,String url,long time) {
-		openBrowser(browser);
-		navigateToApplication(url);
-		waitTillPageLoad(time);
+	public WebDriver openBrowserAndApplication(String url,long time) {
+		WebDriverManager.chromedriver().setup();
+		driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get(url);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(time));
 		return driver;
 	}
 
@@ -91,6 +56,11 @@ public class WebDriverUtility {
 	public void dropDown(WebElement element, String text) {
 		Select s = new Select(element);
 		s.selectByVisibleText(text);
+	}
+	
+	public void dropDown(String text, WebElement element) {
+		Select s = new Select(element);
+		s.selectByValue(text);
 	}
 	
 	/**

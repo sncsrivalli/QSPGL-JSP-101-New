@@ -26,13 +26,12 @@ public class CreateOrganizationTest {
 		ExcelUtility excel = new ExcelUtility();
 		excel.excelFileInitialization(IConstantPath.EXCEL_FILE_PATH);
 		
-		String browser = property.getDataFromPropertyFile("browser");
 		String url = property.getDataFromPropertyFile("url");
 		String username = property.getDataFromPropertyFile("username");
 		String password = property.getDataFromPropertyFile("password");
 		long time = Long.parseLong(property.getDataFromPropertyFile("timeouts")); 
 		
-		WebDriver driver = webdriver.openBrowserAndApplication(browser, url, time);
+		WebDriver driver = webdriver.openBrowserAndApplication( url, time);
 		
 		if (driver.getTitle().contains("vtiger"))
 			System.out.println("Pass: Vtiger login page is diplayed");

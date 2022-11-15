@@ -17,8 +17,6 @@ public class CreateNewOrganizationPage {
 	
 	@FindBy(xpath="//span[@class='lvtHeaderText']")
 	private WebElement pageHeader;
-	
-
 	@FindBy(name = "accountname")
 	private WebElement organizationNameTextField;
 	@FindBy(name = "industry")
@@ -38,6 +36,10 @@ public class CreateNewOrganizationPage {
 	// Business Libraries
 	public void setOrganizationName(String organizationName) {
 		organizationNameTextField.sendKeys(organizationName);
+	}
+	
+	public void selectIndustry(WebDriverUtility webdriver, String industry) {
+		webdriver.dropDown(industryDropdown, industry);
 	}
 	
 	public void clickGroupRadioButton() {

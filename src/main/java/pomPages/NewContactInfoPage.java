@@ -19,7 +19,7 @@ public class NewContactInfoPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	// Utilisation
+	// Utilization
 
 	public String getPageHeader() {
 		return pageHeader.getText();

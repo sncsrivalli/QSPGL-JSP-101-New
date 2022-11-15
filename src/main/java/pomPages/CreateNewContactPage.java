@@ -1,7 +1,6 @@
 package pomPages;
 
 import java.util.List;
-import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,8 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import genericLibraries.ExcelUtility;
-import genericLibraries.JavaUtility;
 import genericLibraries.WebDriverUtility;
 
 public class CreateNewContactPage {
@@ -38,26 +35,25 @@ public class CreateNewContactPage {
 		PageFactory.initElements(driver,this);
 	}
 
-	//Utilisation
+	//Utilization
 	
 	public String getPageHeader() {
 		return pageHeader.getText();
 	}
 	
-	public String createContactWithExistingOrganization(WebDriver driver, WebDriverUtility webdriver, JavaUtility javaUtility,ExcelUtility excel) {
-		Map<String,String> map = excel.fetchMultipleDataBasedOnKeyFromExcel("TestData", "Create Contact");
-		
-		webdriver.dropDown(firstNameSalutationDropdown, map.get("First Name Salutation"));
-
-		String contactName = map.get("Last Name") + javaUtility.generateRandomNumber(100);
-		lastNameTextField.sendKeys(contactName);
+	public void selectFirstNameSalutation(WebDriverUtility webdriver, String value) {
+		webdriver.dropDown(value, firstNameSalutationDropdown);
+	}
+	
+	public void setLastName(String name) {
+		lastNameTextField.sendKeys(name);
+	}
+	
+	public void selectExistingOrganization(WebDriverUtility webdriver, String requiredOrganizationName, WebDriver driver) {
 		organizationPlusButton.click();
-
 		String parentWindow = webdriver.getParentWindow();
 		webdriver.handleChildBrowserPopup("Accounts&action");
 
-		String requiredOrganizationName = map.get("Organization Name");
-		
 		for (int i = 2; i < organizationList.size(); i++) {
 			String requiredPath = String.format(organizationTableRowPath, i);
 			WebElement organization = driver.findElement(By.xpath(requiredPath));
@@ -67,13 +63,15 @@ public class CreateNewContactPage {
 				break;
 			}
 		}
-
 		webdriver.switchToWindow(parentWindow);
-		
-		contactImage.sendKeys(map.get("Contact Image"));
-		saveButton.click();
-		
-		return contactName;
-		
 	}
+	
+	public void uploadContactImage(String imageFilePath) {
+		contactImage.sendKeys(imageFilePath);
+	}
+	
+	public void clickSaveButton() {
+		saveButton.click();
+	}
+		
 }

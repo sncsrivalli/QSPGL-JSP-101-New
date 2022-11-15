@@ -1,4 +1,4 @@
-package genericUtilityImplementation;
+package pomImplementation;
 
 import java.io.IOException;
 import java.util.Map;
