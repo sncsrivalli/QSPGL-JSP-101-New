@@ -1,14 +1,9 @@
 package pomPages;
 
-import java.util.Map;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import genericLibraries.ExcelUtility;
-import genericLibraries.JavaUtility;
 
 public class DuplicatingLeadPage {
 	
@@ -32,13 +27,13 @@ public class DuplicatingLeadPage {
 		return pageHeader.getText();
 	}
 
-	public String duplicatingLead(ExcelUtility excel, JavaUtility javaUtility) {
-		Map<String,String> map =excel.fetchMultipleDataBasedOnKeyFromExcel("TestData", "Create Lead");
-		String leadLastName =map.get("New Last Name")+javaUtility.generateRandomNumber(100);
+	public void setNewLeadName(String leadLastName) {
 		lastNameTextField.clear();
 		lastNameTextField.sendKeys(leadLastName);
+	}
+	
+	public void clickSaveButton() {
 		saveButton.click();
-		return leadLastName;
 	}
 	
 }

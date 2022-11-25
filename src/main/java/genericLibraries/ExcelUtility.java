@@ -77,15 +77,15 @@ public class ExcelUtility {
 	 */
 	public Map<String, String> fetchMultipleDataBasedOnKeyFromExcel(String sheetName, String expectedTestName) {
 		Sheet sheet = workbook.getSheet(sheetName);
-		DataFormatter df = new DataFormatter();
+		
 		Map<String, String> map = new HashMap<>();
 
 		for (int i = 0; i <= sheet.getLastRowNum(); i++) {
-			if (df.formatCellValue(sheet.getRow(i).getCell(1)).equals(expectedTestName)) {
+			if (sheet.getRow(i).getCell(1).getStringCellValue().equals(expectedTestName)) {
 				for (int j = i; j <= sheet.getLastRowNum(); j++) {
-					map.put(df.formatCellValue(sheet.getRow(j).getCell(2)),
-							df.formatCellValue(sheet.getRow(j).getCell(3)));
-					if (df.formatCellValue(sheet.getRow(j).getCell(2)).equals("####"))
+					map.put(sheet.getRow(j).getCell(2).getStringCellValue(),
+							sheet.getRow(j).getCell(3).getStringCellValue());
+					if (sheet.getRow(j).getCell(2).getStringCellValue().equals("####"))
 						break;
 				}
 				break;

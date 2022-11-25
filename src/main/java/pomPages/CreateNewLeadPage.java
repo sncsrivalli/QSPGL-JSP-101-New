@@ -1,14 +1,10 @@
 package pomPages;
 
-import java.util.Map;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import genericLibraries.ExcelUtility;
-import genericLibraries.JavaUtility;
 import genericLibraries.WebDriverUtility;
 
 
@@ -40,19 +36,23 @@ public class CreateNewLeadPage {
 	}
 
 	// Business Libraries
-	public String createLead(WebDriverUtility webdriver,ExcelUtility excel, JavaUtility javaUtility) {
-		Map<String,String> map =excel.fetchMultipleDataBasedOnKeyFromExcel("TestData", "Create Lead");
-
-		webdriver.dropDown(firstNameSalutationDropdown, map.get("First Name Salutation"));
-
-		String leadName = map.get("Last Name")+javaUtility.generateRandomNumber(100);
-		leadLastNameTextField.sendKeys(leadName);
-		companyTextField.sendKeys(map.get("Company"));
-		saveButton.click();
-
-		return leadName;
-
+	
+	public void selectSalutation(WebDriverUtility webdriver,String salutation) {
+		webdriver.dropDown(firstNameSalutationDropdown, salutation);
 	}
+	
+	public void setLastName(String lastName) {
+		leadLastNameTextField.sendKeys(lastName);
+	}
+	
+	public void setCompany(String company) {
+		companyTextField.sendKeys(company);
+	}
+	
+	public void clickSaveButton() {
+		saveButton.click();
+	}
+	
 
 	public String getPageHeader() {
 		return pageHeader.getText();
