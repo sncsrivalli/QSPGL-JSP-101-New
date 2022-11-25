@@ -89,7 +89,7 @@ public class CreateAndDuplicateLeadTest {
 		
 		
 		String newLastName =map.get("New Last Name")+javaUtility.generateRandomNumber(100);
-		duplicatingPage.setNewLeadName(leadName);
+		duplicatingPage.setNewLeadName(newLastName);
 		duplicatingPage.clickSaveButton();
 		
 		if (newLead.getPageHeader().contains(newLastName))
