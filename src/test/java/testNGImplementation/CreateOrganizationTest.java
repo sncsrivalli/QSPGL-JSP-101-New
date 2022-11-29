@@ -13,34 +13,6 @@ public class CreateOrganizationTest extends BaseClass{
 	@Test
 	public void createOrganizationTest() throws IOException {
 		
-//		WebDriverUtility webdriver = new WebDriverUtility();
-//		JavaUtility javaUtility = new JavaUtility();
-//		
-//		PropertyFileUtility property = new PropertyFileUtility();
-//		property.propertyFileInitialization(IConstantPath.PROPERTY_FILE_PATH);
-//		
-//		ExcelUtility excel = new ExcelUtility();
-//		excel.excelFileInitialization(IConstantPath.EXCEL_FILE_PATH);
-//		
-//		String url = property.getDataFromPropertyFile("url");
-//		String username = property.getDataFromPropertyFile("username");
-//		String password = property.getDataFromPropertyFile("password");
-//		long time = Long.parseLong(property.getDataFromPropertyFile("timeouts")); 
-//		
-//		WebDriver driver = webdriver.openBrowserAndApplication( url, time);
-//		
-//		LoginPage loginPage = new LoginPage(driver);
-//		HomePage home = new HomePage(driver);
-//		OrganizationsPage organizations = new OrganizationsPage(driver);
-//		CreateNewOrganizationPage createOrganization =	new CreateNewOrganizationPage(driver);
-//		NewOrganizationInfoPage newOrganizationInfo = new NewOrganizationInfoPage(driver);
-		
-		
-
-		//loginPage.loginToApplication(username, password);
-
-		
-		
 		home.clickOrganizationsTab();
 
 		if (organizations.getPageHeader().contains("Organizations"))
@@ -87,10 +59,6 @@ public class CreateOrganizationTest extends BaseClass{
 			excel.writeDataIntoExcel("TestData", "Fail", IConstantPath.EXCEL_FILE_PATH, "Create Organization");
 		}
 			
-//		home.signOutFromVtiger(webdriver);
-//
-//		webdriver.closeBrowser();
-//		excel.closeExcel();
 	}
 
 }

@@ -8,9 +8,16 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
+import pomPages.ContactsPage;
+import pomPages.CreateNewContactPage;
+import pomPages.CreateNewLeadPage;
 import pomPages.CreateNewOrganizationPage;
+import pomPages.DuplicatingLeadPage;
 import pomPages.HomePage;
+import pomPages.LeadsPage;
 import pomPages.LoginPage;
+import pomPages.NewContactInfoPage;
+import pomPages.NewLeadInfoPage;
 import pomPages.NewOrganizationInfoPage;
 import pomPages.OrganizationsPage;
 
@@ -25,6 +32,13 @@ public class BaseClass {
 	protected OrganizationsPage organizations;
 	protected CreateNewOrganizationPage createOrganization;
 	protected NewOrganizationInfoPage newOrganizationInfo;
+	protected ContactsPage contacts;
+	protected CreateNewContactPage createNewContact;
+	protected NewContactInfoPage newContactInfo;
+	protected LeadsPage leadsPage;
+	protected CreateNewLeadPage createNewLead;
+	protected DuplicatingLeadPage duplicatingLead;
+	protected NewLeadInfoPage newLeadInfo;
 	
 	//@BeforeSuite
 	
@@ -56,6 +70,13 @@ public class BaseClass {
 		organizations = new OrganizationsPage(driver);
 		createOrganization = new CreateNewOrganizationPage(driver);
 		newOrganizationInfo = new NewOrganizationInfoPage(driver);
+		contacts = new ContactsPage(driver);
+		createNewContact = new CreateNewContactPage(driver);
+		newContactInfo = new NewContactInfoPage(driver);
+		leadsPage = new LeadsPage(driver);
+		createNewLead = new CreateNewLeadPage(driver);
+		duplicatingLead = new DuplicatingLeadPage(driver);
+		newLeadInfo = new NewLeadInfoPage(driver);
 	}
 	
 	@BeforeMethod
