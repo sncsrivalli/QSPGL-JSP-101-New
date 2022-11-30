@@ -1,6 +1,7 @@
 package genericLibraries;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -61,11 +62,8 @@ public class BaseClass {
 		
 		driver = webdriver.openBrowserAndApplication(url, timeouts);
 		loginPage = new LoginPage(driver);
-		if (loginPage.getLogo().isDisplayed())
-			System.out.println("Pass: Vtiger login page is diplayed");
-		else
-			System.out.println("Fail: Vtiger login page is not displayed");
-		
+		Assert.assertTrue(loginPage.getLogo().isDisplayed());
+
 		home = new HomePage(driver);
 		organizations = new OrganizationsPage(driver);
 		createOrganization = new CreateNewOrganizationPage(driver);
@@ -84,10 +82,8 @@ public class BaseClass {
 		String username = property.getDataFromPropertyFile("username");
 		String password = property.getDataFromPropertyFile("password");
 		loginPage.loginToApplication(username, password);
-		if (home.getPageHeader().contains("Home"))
-			System.out.println("Pass : Login successful");
-		else
-			System.out.println("Fail : Login not successful");
+		
+		Assert.assertTrue(home.getPageHeader().contains("Home"));
 	}
 	
 	//@Test --> Test Script Executes

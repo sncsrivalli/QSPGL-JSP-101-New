@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import genericLibraries.BaseClass;
 import genericLibraries.IConstantPath;
@@ -11,21 +12,14 @@ import genericLibraries.IConstantPath;
 public class CreateContactTest extends BaseClass{
 	@Test
 	public void createContactTest() throws IOException {
-		
+		SoftAssert soft = new SoftAssert();
 		home.clickContactsTab();
 		
-		if (contacts.getPageHeader().contains("Contacts"))
-			System.out.println("Pass : Contacts page displayed");
-		else
-			System.out.println("Fail : Contacts page not displayed");
-
-		contacts.clickPlusButton();
+		soft.assertTrue(contacts.getPageHeader().contains("Contacts"));
 		
-		if (createNewContact.getPageHeader().contains("Creating New Contact"))
-			System.out.println("Pass : Creating new Contact page is displayed");
-		else
-			System.out.println("Fail : Creating new Contact page is not displayed");
-
+		contacts.clickPlusButton();
+		soft.assertTrue(createNewContact.getPageHeader().contains("Creating New Contact"));
+		
 		Map<String,String> map = excel.fetchMultipleDataBasedOnKeyFromExcel("TestData", "Create Contact");
 		
 		createNewContact.selectFirstNameSalutation(webdriver, map.get("First Name Salutation"));
@@ -34,19 +28,13 @@ public class CreateContactTest extends BaseClass{
 		createNewContact.selectExistingOrganization(webdriver, map.get("Organization Name"), driver);
 		createNewContact.uploadContactImage(map.get("Contact Image"));
 		createNewContact.clickSaveButton();
-
-		if (newContactInfo.getPageHeader().contains(contactName))
-			System.out.println("Pass : New contact created successfully");
-		else
-			System.out.println("Fail : Contact is not created");
-
-		newContactInfo.clickContactsLink();
 		
-		if (contacts.getPageHeader().contains("Contacts"))
-			System.out.println("Pass : Contacts page displayed");
-		else
-			System.out.println("Fail : Contacts page is not displayed");
-
+		soft.assertTrue(newContactInfo.getPageHeader().contains(contactName));
+		
+		newContactInfo.clickContactsLink();
+		soft.assertTrue(contacts.getPageHeader().contains("Contacts"));
+		
+		soft.assertTrue(contacts.getLastContactName().equalsIgnoreCase(contactName));
 		if (contacts.getLastContactName().equalsIgnoreCase(contactName)) {
 			System.out.println("Test Case Passed");
 			excel.writeDataIntoExcel("TestData", "Pass", IConstantPath.EXCEL_FILE_PATH, "Create Contact");
@@ -56,7 +44,7 @@ public class CreateContactTest extends BaseClass{
 			System.out.println("Test Case Failed");
 			excel.writeDataIntoExcel("TestData", "Fail", IConstantPath.EXCEL_FILE_PATH, "Create Contact");
 		}
-			
+		soft.assertAll();	
 	}
 
 }
