@@ -2,10 +2,12 @@
 
 <html>
   <head>
+  <meta charset='utf-8'>
   <title>TestNG reports</title>
 
-    <link type="text/css" href="testng-reports.css" rel="stylesheet" />  
-    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="testng-reports.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type='text/javascript'>
@@ -22,6 +24,7 @@
   <body>
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
       <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
@@ -48,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\QPS-Basavanagudi\AppData\Local\Temp\testng-eclipse--1688734386\testng-customsuite.xml</span>
+                    <span>C:\Users\QPS-Basavanagudi\AppData\Local\Temp\testng-eclipse--234783674\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -101,7 +104,7 @@
                     <div class="method-list-content passed suite-Default_suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="testNGImplementation.CreateContactTest" class="method navigator-link" hash-for-method="createContactTest">createContactTest</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="testNGImplementation.CreateOrganizationTest" class="method navigator-link" hash-for-method="createOrganizationTest">createOrganizationTest</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Default_suite -->
@@ -119,14 +122,14 @@
           <div class="suite-Default_suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">testNGImplementation.CreateContactTest</span>
+              <span class="class-name">testNGImplementation.CreateOrganizationTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="createContactTest">
-                  </a> <!-- createContactTest -->
-                  <span class="method-name">createContactTest</span>
+                  <a name="createOrganizationTest">
+                  </a> <!-- createOrganizationTest -->
+                  <span class="method-name">createOrganizationTest</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -134,16 +137,16 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\QPS-Basavanagudi\AppData\Local\Temp\testng-eclipse--1688734386\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\QPS-Basavanagudi\AppData\Local\Temp\testng-eclipse--234783674\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite parallel=&quot;none&quot; name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
-  &lt;test name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;testNGImplementation.CreateContactTest&quot;/&gt;
+      &lt;class name=&quot;testNGImplementation.CreateOrganizationTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -185,14 +188,14 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'createContactTest')
-data.setCell(0, 2, 'testNGImplementation.CreateContactTest')
-data.setCell(0, 3, 28891);
+data.setCell(0, 1, 'createOrganizationTest')
+data.setCell(0, 2, 'testNGImplementation.CreateOrganizationTest')
+data.setCell(0, 3, 25914);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 28 seconds</span>
+              <span class="suite-total-time">Total running time: 25 seconds</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -218,38 +221,39 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">testNGImplementation.CreateContactTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">testNGImplementation.CreateOrganizationTest</div> <!-- chronological-class-name -->
               <div class="configuration-test before">
                 <span class="method-name">testSetUp</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-test before -->
               <div class="configuration-class before">
                 <span class="method-name">classSetUp</span>
-                <span class="method-start">1042 ms</span>
+                <span class="method-start">1254 ms</span>
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
                 <span class="method-name">methodSetUp</span>
-                <span class="method-start">4492 ms</span>
+                <span class="method-start">9962 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">createContactTest</span>
-                <span class="method-start">12109 ms</span>
+                <span class="method-name">createOrganizationTest</span>
+                <span class="method-start">17468 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">methodTearDown</span>
-                <span class="method-start">41003 ms</span>
+                <span class="method-start">43389 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-class after">
                 <span class="method-name">classTearDown</span>
-                <span class="method-start">43117 ms</span>
+                <span class="method-start">45480 ms</span>
               </div> <!-- configuration-class after -->
               <div class="configuration-test after">
                 <span class="method-name">testTearDown</span>
-                <span class="method-start">43388 ms</span>
+                <span class="method-start">45873 ms</span>
               </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->
     </div> <!-- wrapper -->
   </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
 </html>
