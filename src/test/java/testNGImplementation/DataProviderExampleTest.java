@@ -2,7 +2,7 @@ package testNGImplementation;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-//Test Using DataProvider 
+//Test 
 public class DataProviderExampleTest {
 	
 	@Test(dataProvider = "dataToBookTicket")
